@@ -1,0 +1,18 @@
+/// # rise dialect
+///
+/// ## High-Level Primitives
+///
+.ax %rise.mul: [.Nat, .Nat] -> .Nat; // Right now, there is now builtin way to calc with .Nat
+
+.ax %rise.id: Π T: * -> T -> T;
+.ax %rise.arith(add, mul, sub): Π T: * -> T -> T;
+.ax %rise.map(Pure, Seq, SeqUnroll, Par): Π n: .Nat -> Π [T1: *, T2: *] -> T1 -> T2 -> «n; T1» -> «n; T2»;
+.ax %rise.reduce(Pure, Seq, SeqUnroll):   Π n: .Nat -> Π [T1: *, T2: *] -> [T1 -> T2 -> T1] -> T1 -> «n; T2» -> T1;
+.ax %rise.zip:                            Π n: .Nat -> Π [T1: *, T2: *] -> «n; T1» -> «n; T2» -> «n; [T1, T2]»;
+.ax %rise.split:                          Π [n: .Nat, m: .Nat] -> Π T: * -> «%rise.mul(n, m); T» -> «n; «m; T»»;
+.ax %rise.join:                           Π [n: .Nat, m: .Nat] -> Π T: * -> «n; «m; T»» -> «%rise.mul(n, m); T»;
+.ax %rise.transpose:                      Π [n: .Nat, m: .Nat] -> Π T: * -> «n; «m; T»» -> «m; «n; T»»;
+.ax %rise.generate:                       Π n: .Nat -> Π T: * -> [%Int n -> T] -> «n; T»;
+
+/// ## High-Level Primitives
+///
