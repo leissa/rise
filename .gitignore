@@ -1,3 +1,4 @@
 build*
 thorin2
 lib
+.clang-format

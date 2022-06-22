@@ -13,7 +13,8 @@ add_subdirectory(thorin2)
 
 add_thorin_dialect(rise
     SOURCES
-        rise/test.cpp
+        rise/rise.h
+        rise/rise.cpp
 )
 
 # TODO this shouldn't be necessary
