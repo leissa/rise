@@ -27,5 +27,5 @@ cmake --build build -j $(nproc)
 ## Run
 
 ```sh
-TODO
+../thorin2/install/bin/thorin -D build/lib/thorin/ -e thorin dotp.thorin
 ```
