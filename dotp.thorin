@@ -3,7 +3,7 @@
 .let i8 = %Int 256;
 .lam .extern dotp: [n: .Nat, a: «n; i8», b: «n; i8»] -> i8 = {
     .ff,
-    .let z = %rise.zip n (i8, i8) (a, b);
-    .let m = %rise.map.Pure n ([i8, i8], i8) (%rise.arith.mul i8, z);
-    %rise.reduce.Pure n (i8, i8) (%rise.arith.add i8, 0:i8, m)
+    .let z = %rise.zip (n, i8, i8) (a, b);
+    .let m = %rise.map.Pure (n, [i8, i8], i8) (%rise.arith.mul i8, z);
+    %rise.reduce.Pure (n, i8, i8) (%rise.arith.add i8, 0:i8, m)
 };

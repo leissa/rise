@@ -2,7 +2,7 @@
 
 ## Build Instructions
 
-### Install Thorin
+### Build & Install Thorin
 
 ```sh
 git clone --recurse-submodules git@github.com:AnyDSL/thorin2.git
@@ -27,5 +27,5 @@ cmake --build build -j $(nproc)
 ## Run
 
 ```sh
-../thorin2/install/bin/thorin -D build/lib/thorin/ -e thorin dotp.thorin
+../thorin2/install/bin/thorin -D build/lib/thorin -e thorin dotp.thorin --output-thorin -
 ```

@@ -1,8 +1,6 @@
-#include "build/rise.h"
+#include "rise/rise.h"
 
 #include <thorin/config.h>
-#include <thorin/pass/pass.h>
-
 #include <thorin/dialects.h>
 
 extern "C" THORIN_EXPORT thorin::DialectInfo thorin_get_dialect_info() {
@@ -22,10 +20,10 @@ const Def* map_fusion(const Def* def) {
             auto pi = world.pi(f->type()->as<Pi>()->dom(), g->type()->as<Pi>()->codom());
             auto lam = world.nom_lam(pi, nullptr);
             lam->app(false, f, world.app(g, lam->var()));
-            return world.call(map::Pure, {lam, xs});
+            return world.app(world.ax(map::Pure), {lam, xs});
         }
     }
     return def;
 }
 
-}
+} // namespace thorin::rise

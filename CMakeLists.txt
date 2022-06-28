@@ -3,8 +3,4 @@ project(rise)
 
 find_package(thorin)
 
-add_thorin_dialect(rise
-    SOURCES
-        rise/rise.h
-        rise/rise.cpp
-)
+add_subdirectory(dialects)
