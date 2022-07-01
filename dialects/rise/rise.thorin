@@ -4,7 +4,7 @@
 
 .ax %rise.id: Π T: * -> T -> T;
 .ax %rise.arith(add, mul, sub): Π T: * -> [T, T] -> T;
-.ax %rise.map(Pure, Seq, SeqUnroll, Par): Π [n: .Nat, T1: *, T2: *] -> [T1 -> T2, «n; T1»] -> «n; T2»;
+.ax %rise.map(Pure, Seq, SeqUnroll, Par): Π [n: .Nat, T1: *, T2: *] -> [T1 -> T2, «n; T1»] -> «n; T2», normalize_map;
 .ax %rise.reduce(Pure, Seq, SeqUnroll):   Π [n: .Nat, T1: *, T2: *] -> [[T1, T2] -> T1, T1, «n; T2»] -> T1;
 .ax %rise.zip:                            Π [n: .Nat, T1: *, T2: *] -> [«n; T1», «n; T2»] -> «n; [T1, T2]»;
 .ax %rise.split:                          Π [n: .Nat, m: .Nat, T: *] -> «%rise.mul(n, m); T» -> «n; «m; T»»;
