@@ -2,8 +2,7 @@
 
 #include "dialects/rise/rise.h"
 
-namespace thorin::normalize {
-using namespace thorin::rise;
+namespace thorin::rise {
 
 template<map op>
 const Def* normalize_map(const Def* type, const Def* callee, const Def* arg, const Def* dbg) {
