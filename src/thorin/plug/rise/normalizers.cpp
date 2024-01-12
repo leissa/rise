@@ -1,11 +1,12 @@
-#include "thorin/normalize.h"
+#include <thorin/normalize.h>
+#include <thorin/world.h>
 
-#include "dialects/rise/rise.h"
+#include "thorin/plug/rise/rise.h"
 
-namespace thorin::rise {
+namespace thorin::plug::rise {
 
 template<map op>
-const Def* normalize_map(const Def* type, const Def* callee, const Def* arg, const Def* dbg) {
+Ref normalize_map(Ref type, Ref callee, Ref arg) {
     auto& world = type->world();
     auto [f, xs] = arg->projs<2>();
 
@@ -17,14 +18,14 @@ const Def* normalize_map(const Def* type, const Def* callee, const Def* arg, con
             auto T3 = g->type()->as<Pi>()->dom();
 
             auto pi = world.pi(T1, T3);
-            auto lam = world.nom_lam(pi, dbg);
-            lam->app(true, f, world.app(g, lam->var()), dbg); // true filter: always inline
+            auto lam = world.mut_lam(pi);
+            lam->app(true, f, world.app(g, lam->var())); // true filter: always inline
 
-            return world.app(world.app(world.ax(map::Pure), {n, T1, T3}, dbg), {lam, ys}, dbg);
+            return world.app(world.app(world.annex(map::Pure), {n, T1, T3}), {lam, ys});
         }
     }
 
-    return world.raw_app(callee, arg, dbg);
+    return world.raw_app(type, callee, arg);
 }
 
 THORIN_rise_NORMALIZER_IMPL

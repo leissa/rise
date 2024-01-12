@@ -3,4 +3,4 @@ project(rise)
 
 find_package(thorin)
 
-add_subdirectory(dialects)
+add_subdirectory(src)

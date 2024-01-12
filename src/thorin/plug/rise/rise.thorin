@@ -10,4 +10,4 @@
 .ax %rise.split:                          Π [n: .Nat, m: .Nat, T: *] -> «%rise.mul(n, m); T» -> «n; «m; T»»;
 .ax %rise.join:                           Π [n: .Nat, m: .Nat, T: *] -> «n; «m; T»» -> «%rise.mul(n, m); T»;
 .ax %rise.transpose:                      Π [n: .Nat, m: .Nat, T: *] -> «n; «m; T»» -> «m; «n; T»»;
-.ax %rise.generate:                       Π [n: .Nat, T: *] -> [%Int n -> T] -> «n; T»;
+.ax %rise.generate:                       Π [n: .Nat, T: *] -> [.Idx n -> T] -> «n; T»;

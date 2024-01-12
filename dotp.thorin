@@ -1,10 +1,10 @@
 .import rise;
 
-.let I8 = %Int 256;
-.lam .extern dotp(n: .Nat, a: «n; I8», b: «n; I8») -> I8 =
+.let I8 = .Idx 256;
+.lam .extern dotp(n: .Nat, a: «n; I8», b: «n; I8»): I8 =
     .let z = %rise.zip (n, I8, I8) (a, b);
     .let m = %rise.map.Pure (n, [I8, I8], I8) (%rise.arith.mul I8, z);
     %rise.reduce.Pure (n, I8, I8) (%rise.arith.add I8, 0:I8, m);
 
-.lam .extern test_fusion(n: .Nat, T1: *, T2: *, T3: *, f: T1 -> T2, g: T2 -> T3, xs: «n; T1») -> «n; T3» = 
+.lam .extern test_fusion(n: .Nat, T1: *, T2: *, T3: *, f: T1 -> T2, g: T2 -> T3, xs: «n; T1»): «n; T3» =
     %rise.map.Pure (n, T2, T3) (g, %rise.map.Pure (n, T1, T2) (f, xs));
